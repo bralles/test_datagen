@@ -4,16 +4,25 @@ en = elizabeth.Business('en')
 per = elizabeth.Personal('en')
 path1 = elizabeth.Path()
 
-for i in range(1, 5):
-    print('Company Name: ' + en.company() + '\t')
-    print('Name: ' + per.full_name() + '\t')
-    print('Social Media Profile: ' + per.social_media_profile() + '\t')
-    print('Where are passwords stored?: ' + path1.project_dir() + '\t')
-    print('Computer IP Address: ' + elizabeth.core.Internet.ip_v4() + '\t')
-    print('Username: ' + per.username() + '\t')
-    print('Password: ' + per.password(8) + '\t')
-    print('Credit Card #: ' + per.credit_card_number() + '\t')
-    print('Expiration Date: ' + per.credit_card_expiration_date() + '\t')
-    print('CVV: ' + str(per.cvv()) + '\t')
-    print('SSN: ' + per.identifier(mask='###-##-####') + '\t')
-    print('Company Value: ' + en.price(100000.0, 100000000.0) + '\n')
+f = open("test_data.txt", 'a+', encoding='utf-8')
+count = 1
+quantity = int(input('How many records do you want to generate?: '))
+
+for i in range(1, quantity + 1):
+
+    f.write('Record #: ' + str(count) + '\n',)
+    f.write('Company Name: ' + en.company() + '\n')
+    f.write('Name: ' + per.full_name() + '\n')
+    f.write('Social Media Profile: ' + per.social_media_profile() + '\n')
+    f.write('Computer IP Address: ' + elizabeth.core.Internet.ip_v4() + '\n')
+    f.write('Username: ' + per.username() + '\n')
+    f.write('Password: ' + per.password(8) + '\n')
+    f.write('Credit Card #: ' + per.credit_card_number() + '\n')
+    f.write('Expiration Date: ' + per.credit_card_expiration_date() + '\n')
+    f.write('CVV: ' + str(per.cvv()) + '\n')
+    f.write('SSN: ' + per.identifier(mask='###-##-####') + '\n')
+    f.write('Company Value: ' + en.price(100000.0, 100000000.0) + '\n\n')
+    count += 1
+
+f.close()
+
